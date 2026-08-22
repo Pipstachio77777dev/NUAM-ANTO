@@ -1,0 +1,32 @@
+================================================================
+NUAM-ANTO - DESCRIPCION DEL PROYECTO
+================================================================
+
+DESCRIPCION GENERAL
+----------------------------------------------------------------
+Crear un mantenedor, para poder cargar calificaciones tributarias,
+donde se conviertan de montos a factores a utilizar.
+
+MODULO
+----------------------------------------------------------------
+Mantenedor de Calificaciones Tributarias
+
+FUNCIONALIDADES
+----------------------------------------------------------------
+1. Despliegue y busqueda de calificaciones
+2. Crear calificaciones
+   - Instrumentos no inscritos
+   - Ingresar calificaciones
+   - Ingreso manual de montos
+   - Ingreso manual de calificaciones
+3. Modificar calificaciones
+4. Eliminar calificaciones
+5. Carga de archivos
+   - Carga de archivo calificaciones masivas (Montos - DJ1948)
+   - Carga de archivo calificaciones masivas (Factores)
+
+STACK TECNICO
+----------------------------------------------------------------
+- Python 3.14 con entorno virtual (venv/)
+- Servidor web Flask (nuam-app.py) en http://127.0.0.1:5000
+- Atajos: _actualizar.bat (git pull) / _save.bat (git push)

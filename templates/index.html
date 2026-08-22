@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUAM — Mantenedor de Calificaciones Tributarias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+
+<div id="vista-login" class="pantalla-login">
+    <form class="caja-login" onsubmit="return iniciarSesion(event)">
+        <div class="logo-login">NUAM</div>
+        <div class="sub-login">Mantenedor de Calificaciones Tributarias</div>
+        <label>Correo electrónico</label>
+        <input type="email" id="login-correo" value="" placeholder="ADMIN@mail.com" autocomplete="username">
+        <label>Contraseña</label>
+        <input type="password" id="login-clave" placeholder="••••" autocomplete="current-password">
+        <div id="login-error" class="error-msj oculto"></div>
+        <button type="submit" class="btn primario ancho">Ingresar</button>
+    </form>
+</div>
+
+<div id="app-principal" class="oculto">
+    <header class="tab-superior">
+        <a href="#" class="logo-tab" onclick="irA('inicio'); return false;">NUAM</a>
+        <span id="tab-titulo" class="titulo-pantalla"></span>
+        <button id="btn-volver" class="btn fantasma claro" onclick="irA('inicio')">← Volver</button>
+        <div class="zona-usuario">
+            <span class="datos-usuario"><b>ADMIN</b><small>ADMIN@mail.com</small></span>
+            <img src="{{ url_for('static', filename='img/avatar.svg') }}" alt="avatar" class="avatar"
+                 onclick="alternarMenuUsuario()">
+            <div id="menu-usuario" class="menu-usuario oculto">
+                <a href="#" onclick="cerrarSesion(); return false;">Cerrar sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar expandido">
+        <button id="btn-colapsar" class="btn-colapsar" onclick="alternarSidebar()">‹</button>
+        <nav>
+            <a href="#" id="nav-inicio" onclick="irA('inicio'); return false;"><span class="icono">⌂</span><span class="texto">Inicio</span></a>
+            <a href="#" id="nav-consultar" onclick="irA('consultar'); return false;"><span class="icono">☰</span><span class="texto">Consultar calificaciones</span></a>
+            <a href="#" id="nav-ingresar" onclick="irAFormulario(); return false;"><span class="icono">+</span><span class="texto">Ingresar calificación</span></a>
+            <a href="#" id="nav-masiva" onclick="irA('masiva'); return false;"><span class="icono">⇪</span><span class="texto">Carga masiva</span></a>
+            <a href="#" id="nav-trazabilidad" onclick="irA('trazabilidad'); return false;"><span class="icono">◎</span><span class="texto">Trazabilidad</span></a>
+        </nav>
+        <div class="pie-sidebar">
+            <a href="#" onclick="cerrarSesion(); return false;"><span class="icono">⏻</span><span class="texto">Cerrar sesión</span></a>
+        </div>
+    </aside>
+
+    <main class="contenido">
+
+        <section id="pantalla-inicio" class="pantalla oculto">
+            <h2>Bienvenido al Mantenedor de Calificaciones Tributarias</h2>
+            <p class="gris">Homologación DJ 1949 a DJ 1922 · factores tributarios por columna (8–37)</p>
+            <div class="tarjetas-inicio">
+                <div class="tarjeta-inicio" onclick="irA('consultar')">
+                    <span class="icono-grande">☰</span>
+                    <h3>Consultar calificaciones</h3>
+                    <p>Filtra por mercado, origen y ejercicio.</p>
+                </div>
+                <div class="tarjeta-inicio" onclick="irAFormulario()">
+                    <span class="icono-grande">+</span>
+                    <h3>Ingresar calificación</h3>
+                    <p>Crea un nuevo registro con factores calculados.</p>
+                </div>
+                <div class="tarjeta-inicio" onclick="irA('masiva')">
+                    <span class="icono-grande">⇪</span>
+                    <h3>Carga masiva</h3>
+                    <p>Procesa múltiples líneas desde un CSV o texto.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pantalla-consultar" class="pantalla oculto">
+            <div class="barra-filtros tarjeta-blanca">
+                <div class="campo">
+                    <label>Mercado</label>
+                    <select id="filtro-mercado">
+                        <option value="">Todos</option>
+                        <option value="ACC">ACC</option>
+                        <option value="CFI">CFI</option>
+                        <option value="FMU">FMU</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Origen</label>
+                    <select id="filtro-origen">
+                        <option value="">Todos</option>
+                        <option value="ENTIDAD">Entidad</option>
+                        <option value="SISTEMA">Sistema</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Ejercicio</label>
+                    <select id="filtro-ejercicio"><option value="">Todos</option></select>
+                </div>
+                <button class="btn primario" onclick="consultar()">Buscar</button>
+            </div>
+
+            <div class="barra-acciones">
+                <button class="btn primario" onclick="irAFormulario()">Ingresar</button>
+                <button id="btn-modificar" class="btn secundario" disabled onclick="modificarSeleccionado()">Modificar</button>
+                <button id="btn-eliminar" class="btn peligro" disabled onclick="eliminarSeleccionado()">Eliminar</button>
+                <button class="btn secundario" onclick="irA('masiva')">Carga masiva</button>
+            </div>
+
+            <div class="tabla-envoltura tarjeta-blanca">
+                <table id="grilla">
+                    <thead>
+                    <tr>
+                        <th>ID</th><th>Mercado</th><th>Instrumento</th><th>Secuencia</th>
+                        <th>Dividendo</th><th>Fecha pago</th><th>Valor histórico</th>
+                        <th>Ejercicio</th><th>ISFUT</th><th>Origen</th><th>Factor col. 8</th>
+                    </tr>
+                    </thead>
+                    <tbody id="grilla-cuerpo"></tbody>
+                </table>
+                <div id="grilla-vacia" class="vacio oculto">Sin resultados para los filtros seleccionados.</div>
+            </div>
+        </section>
+
+        <section id="pantalla-formulario" class="pantalla oculto">
+            <div class="tarjeta-blanca formulario-ancho">
+                <h3 id="titulo-formulario">Ingresar calificación</h3>
+                <div id="form-errores" class="error-caja oculto"></div>
+                <form onsubmit="return guardarFormulario(event)">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label>Mercado *</label>
+                            <select id="f-mercado">
+                                <option value="ACC">ACC</option>
+                                <option value="CFI">CFI</option>
+                                <option value="FMU">FMU</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label>Instrumento *</label>
+                            <input type="text" id="f-instrumento" maxlength="50">
+                        </div>
+                        <div class="campo">
+                            <label>Secuencia evento *</label>
+                            <input type="number" id="f-secuencia" min="0" step="1">
+                        </div>
+                        <div class="campo">
+                            <label>Dividendo *</label>
+                            <input type="number" id="f-dividendo" step="any">
+                        </div>
+                        <div class="campo">
+                            <label>Fecha de pago * (DD-MM-AAAA)</label>
+                            <input type="text" id="f-fecha" placeholder="15-05-2023" maxlength="10">
+                        </div>
+                        <div class="campo">
+                            <label>Valor histórico *</label>
+                            <input type="number" id="f-valor-historico" step="any">
+                        </div>
+                        <div class="campo">
+                            <label>Ejercicio * (AAAA)</label>
+                            <input type="number" id="f-ejercicio" min="1000" max="9999" step="1">
+                        </div>
+                        <div class="campo">
+                            <label>Factor de actualización *</label>
+                            <input type="number" id="f-factor-actualizacion" step="any">
+                        </div>
+                        <div class="campo">
+                            <label>Origen *</label>
+                            <select id="f-origen">
+                                <option value="ENTIDAD">ENTIDAD</option>
+                                <option value="SISTEMA">SISTEMA</option>
+                            </select>
+                        </div>
+                        <div class="campo campo-check">
+                            <label class="check-inline">
+                                <input type="checkbox" id="f-isfut"> ISFUT
+                            </label>
+                        </div>
+                    </div>
+                    <div class="campo">
+                        <label>Descripción</label>
+                        <input type="text" id="f-descripcion" maxlength="255">
+                    </div>
+                    <div class="acciones-form">
+                        <button type="submit" class="btn primario">Guardar</button>
+                        <button type="button" class="btn secundario" onclick="irA('consultar')">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="pantalla-masiva" class="pantalla oculto">
+            <div class="tarjeta-blanca formulario-ancho">
+                <h3>Carga masiva de calificaciones</h3>
+                <p class="gris">Una línea por registro, campos separados por coma:</p>
+                <code class="formato-linea">ejercicio, mercado, instrumento, fecha, secuenciaEvento, dividendo, valorHistorico, descripcion, isfut, factorActualizacion, origen</code>
+                <p class="gris">Ejemplo: <code>2023, ACC, EMPRESAS CMPC S.A., 15-05-2023, 12345, 1200.5, 12500, Dividendo definitivo N°200, si, 1.00024, SISTEMA</code></p>
+                <input type="file" accept=".csv,.txt" onchange="leerArchivoMasiva(this)">
+                <textarea id="masiva-texto" rows="8"
+                          placeholder="2023, ACC, EMPRESAS CMPC S.A., 15-05-2023, 12345, 1200.5, 12500, Dividendo definitivo N°200, si, 1.00024, SISTEMA&#10;2024, FMU, FM PRINCIPAL CHILE, 05-07-2024, 10567, 275.4, 2400, Cuota N°8, si, 1.00005, ENTIDAD"></textarea>
+                <div class="acciones-form">
+                    <button class="btn primario" onclick="procesarMasiva()">Procesar carga</button>
+                </div>
+                <div id="masiva-resumen" class="oculto"></div>
+                <div id="masiva-errores" class="error-caja oculto"></div>
+            </div>
+        </section>
+
+        <section id="pantalla-trazabilidad" class="pantalla oculto">
+            <div class="barra-acciones">
+                <button class="btn secundario" onclick="cargarTrazabilidad()">⟳ Refrescar</button>
+            </div>
+            <div id="trazabilidad-lista"></div>
+        </section>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
