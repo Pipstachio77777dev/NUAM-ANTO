@@ -1,0 +1,816 @@
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+INFORME DE NUAM 
+ 
+ 
+ 
+Asignatura:  
+Proyecto Integrado 
+Seccion 
+2026/P TIHI43/D-IEC-N4-P1-C1/D 
+docente 
+José Luis Martínez Opazo 
+integrantes: 
+Antonia Salinas 
+Alonso Villagra 
+Franco Segovia 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+Contenido 
+
+ 
+
+ 
+
+ 
+
+Introducción  
+ 
+
+Nuam: 
+Es un holding que junta a la bolsa de chile con colombia  y peru 
+El proyecto corresponde a un Mantenedor de Calificaciones Tributarias para la empresa nuam. El objetivo principal es permitir cargar calificaciones tributarias y convertir montos en factores que serán utilizados por el sistema.  
+
+ 
+
+Necesidades TI del negocio 
+
+Necesidades que identificar mediante entrevista con la contraparte de nuam 
+Eduardo  Leiva Palomera y María Valentina Labra 
+realizaremos  historias de usuarios que posteriormente serán nuestros requerimentos 
+ 
+Necesidades tecnológicas tiene NUAM. 
+
+Ejemplos: 
+
+Gestión de información. 
+
+Automatización de procesos. 
+
+Gestión de clientes. 
+
+Seguridad de la información. 
+
+Disponibilidad del sistema. 
+
+Integración de sistemas. 
+
+Almacenamiento de datos. 
+Buenas prácticas 
+
+El proyecto está dividido principalmente en: 
+
+Sección 
+
+Qué contiene 
+
+Control de Versiones 
+
+Empresa, autor, Jira, versión y fechas 
+
+Objetivo y alcance 
+
+Qué debe hacer el sistema 
+
+Historias de Usuario 
+
+Funcionalidades que debe implementar 
+
+Mockups 
+
+Referencias visuales de las pantallas 
+
+Homologación 
+
+Se mencionan reglas/cálculos y nombres de campos, aunque esa parte no aparece completa en el TXT 
+
+ 
+
+ 
+
+ 
+
+Tendencias TI 
+
+Investiga tendencias actuales que tengan sentido para el proyecto. 
+
+Por ejemplo: 
+
+Inteligencia artificial. 
+
+Computación en la nube. 
+
+Automatización. 
+
+Ciberseguridad. 
+
+Análisis de datos. 
+
+APIs e integración de sistemas. 
+
+No basta con decir “IA es una tendencia”. Debes explicar: 
+
+Tendencia → cómo se aplica → qué beneficio produce en este negocio. 
+
+Impacto de las tendencias 
+
+ 
+
+ 
+
+Metodologías TI 
+ 
+
+Para agilisar el desarrollo de Nuam  
+Elegiremos que metodología nos es adecuada para el proyecto 
+Comparando Alternativas como KANBAN y SCRUM o XP  
+Relacionandola con las necesidades del cliente y el proyecto 
+
+Scrum vs Kanban vs XP  
+¿por qué sirven para el proyecto? 
+Kanban 
+Define tareas asignadas (Work in progres) para evitar sobrecarga y desviaciones 
+Scrum 
+Relaciona al Product owner con el equipo del proyecto 
+Hay interacción con stakeholders es decir los interesados en el proyecto, como usuarios finales de nuestra aplicacion.  
+Los requerimientos pueden priorizarse.  
+Se pueden desarrollar incrementos.  
+Se requiere retroalimentación frecuente.  
+Los requerimientos pueden cambiar durante el desarrollo. 
+ 
+Define Sprint: un evento/ciclo de trabajo con duración fija. Dentro de Scrum existen eventos como Sprint Planning, Daily Scrum, Sprint Review y Sprint Retrospective 
+ 
+Comparación con alternativas 
+
+Criterio 
+
+Scrum 
+
+Kanban 
+
+XP 
+
+Trabajo iterativo 
+
+Alto 
+
+Alto 
+
+Alto 
+
+Cambios frecuentes 
+
+Alto 
+
+Muy alto 
+
+Alto 
+
+Roles definidos 
+
+Sí 
+
+No necesariamente 
+
+Sí 
+
+Desarrollo técnico 
+
+Medio 
+
+Medio 
+
+Muy alto 
+
+ 
+Elección final Skrum 
+Después debes concluir que cada una tiene sus propias cualidades, pero se usara la que mejor se adapte para el proyecto y se avanzara por requerimiento en Relación con las necesidades del cliente, dado este análisis concluimos que Skrum es la mejor alternativa. 
+
+ 
+
+ 
+
+Historias de usuario 
+
+Fundamentos 
+
+Las necesidades en historias de usuario, La estructura típica es: 
+
+Yo Como [rol], 
+quiero [objetivo],  
+para [beneficio]. 
+ 
+Cada historia debe tener: 
+
+Rol 
+
+Objetivo 
+
+Beneficio 
+
+Criterios de aceptación 
+ 
+
+ 
+
+Además, las historias deben estar adaptadas al negocio específico, no ser genéricas. 
+
+Ejemplos: 
+
+Como administrador, quiero registrar nuevos clientes para mantener actualizada la información del negocio. 
+
+Ejemplo: 
+
+Historia: Registrar cliente 
+Rol: Administrador 
+Objetivo: Registrar clientes en el sistema. 
+Beneficio: Mantener la información centralizada. 
+Criterios de aceptación: 
+
+El sistema debe solicitar los datos obligatorios. 
+
+No debe permitir registrar un cliente sin los campos obligatorios. 
+
+El sistema debe confirmar el registro exitoso. 
+
+No debe permitir duplicar clientes según la regla definida. 
+
+ 
+
+ 
+
+Hay funcionalidades como: 
+
+Mantenedor y búsqueda de calificaciones. 
+
+Ingreso manual de una calificación. 
+
+Ingreso de montos. 
+
+Cálculo automático de factores. 
+
+Ingreso/modificación de factores. 
+
+Modificación y eliminación de calificaciones. 
+
+Carga masiva mediante CSV. 
+
+Actualización de registros existentes. 
+
+Identificación del origen de la calificación. 
+
+También hay reglas de negocio importantes, por ejemplo: 
+
+La información ingresada por el corredor tiene prioridad sobre otras fuentes.  
+
+Y: 
+
+La suma de los factores 8 al 16 no debe superar 1.  
+
+Además, cada ingreso, modificación o eliminación debe generar un log.  
+ 
+ 
+necesidades son más importantes que otras. 
+
+Por ejemplo: 
+
+Prioridad 
+
+Necesidad 
+
+Justificación 
+
+Alta 
+
+Seguridad 
+
+Protege información crítica 
+
+Alta 
+
+Automatización 
+
+Reduce errores y tiempo 
+
+Media 
+
+Reportes 
+
+Facilita decisiones 
+
+Baja 
+
+Interfaz avanzada 
+
+Mejora experiencia, pero no es crítica 
+
+ 
+
+ 
+
+Historias de usuario Reales 
+
+ 
+
+ 
+
+Aqui crear historias de usuario 
+
+ 
+
+ 
+
+Mockups 
+ 
+
+analizar los requerimentos para diseñar ventanas y programar en base a los apoyos visuales 
+
+ 
+
+ 
+
+Requerimientos funcionales y no funcionales 
+
+Requerimientos 
+Funcionales 
+No funcionales 
+Ejemplos 
+
+Los clasificaremos por Importancia y Relación con las necesidades del negocio 
+Priorización 
+
+Funcionales 
+Indican qué debe hacer el sistema. 
+
+Ejemplos: 
+
+Registrar clientes. 
+
+Modificar clientes. 
+
+Eliminar clientes. 
+
+Consultar información. 
+
+Generar reportes. 
+
+Autenticar usuarios. 
+
+No funcionales 
+
+Indican cómo debe funcionar el sistema. 
+
+Ejemplos: 
+
+Seguridad. 
+
+Rendimiento. 
+
+Disponibilidad. 
+
+Usabilidad. 
+
+Escalabilidad. 
+
+Mantenibilidad. 
+
+Y debes explicar por qué cada requerimiento es importante para el negocio. 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Requerimientos identificados 
+ 
+
+1. Objetivo 
+
+2. Mantenedor de calificaciones 
+
+3. Ingreso de calificación 
+
+4. Ingreso de montos 
+
+5. Cálculo de factores 
+
+6. Ingreso por factores 
+
+7. Modificación y eliminación 
+
+8. Carga masiva de calificaciones 
+
+9. Carga masiva de montos y factores 
+
+10. Ventana de carga externa 
+
+11. Actualización de registros existentes 
+
+12. Fuente de ingreso 
+
+13. Reglas de negocio 
+
+14. Homologación de campos 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+Requerimientos aplicables 
+
+ 
+
+Mantenedor de calificaciones 
+
+Objetivo: 
+
+Disponer de un módulo que permita almacenar, consultar, ingresar, modificar y eliminar información asociada a calificaciones tributarias provenientes de carga externa, ingreso manual o información generada por el sistema. 
+
+Filtros del mantenedor: 
+
+Tipo de mercado: Acciones, CFI y Fondos Mutuos. 
+
+Origen de la información: entidad prestadora del servicio, corredora o sistema. 
+
+Período comercial: año correspondiente. 
+
+Información mostrada en la grilla: 
+
+Ejercicio / período comercial. 
+
+Instrumento. 
+
+Fecha de pago del dividendo. 
+
+Descripción del dividendo. 
+
+Secuencia del evento de capital. 
+
+Acogido a ISFUT / ISIFT. 
+
+Origen de la información. 
+
+Factor de actualización. 
+
+Factores 8 al 37, según homologación de columnas. 
+
+Acciones disponibles: 
+
+Buscar: consulta la información según los filtros seleccionados. 
+
+Limpiar: elimina los filtros y restablece sus valores predeterminados. 
+
+Eliminar: elimina el registro seleccionado. 
+
+Carga masiva. 
+
+Ingresar. 
+
+Modificar. 
+
+ 
+
+ 
+
+ 
+
+Ingreso de calificación 
+
+Al seleccionar Ingresar, el sistema debe abrir una ventana para registrar los datos básicos de una nueva calificación. 
+
+Datos requeridos: 
+
+Mercado: cargado según el mercado seleccionado previamente. 
+
+Instrumento. 
+
+Secuencia del evento: debe ser superior a 10.000. 
+
+Dividendo: valor 0 por defecto. 
+
+Fecha de pago: mediante calendario. 
+
+Valor histórico. 
+
+Año: cargado según el mercado seleccionado. 
+
+Descripción. 
+
+ISFUT: selección Sí/No. 
+
+Factor de actualización: 0 por defecto. 
+
+Acción: 
+
+OK: registra los datos mínimos y permite continuar con el ingreso de los montos. 
+
+ 
+
+Ingreso de montos para la calificación 
+
+Una vez ingresados los datos mínimos, el sistema debe permitir registrar los 29 campos correspondientes a los factores 8 al 37, utilizando los nombres definidos en la homologación de columnas. 
+
+La ventana debe incluir: 
+
+Campos para ingresar los montos. 
+
+Botón Calcular. 
+
+Botón Grabar. 
+
+Botón Cancelar. 
+
+Regla de negocio: 
+
+La suma de los factores 8 al 16 no debe superar el valor 1. 
+
+ 
+
+Cálculo de factores 
+
+Al seleccionar Calcular, el sistema debe obtener y mostrar los factores calculados a partir de los montos ingresados. 
+
+Las fórmulas utilizadas deben corresponder a las definidas en la hoja de Homologación de columnas. 
+
+Debe validarse que: 
+
+Suma de factores 8 al 16 ≤ 1 
+
+ 
+
+Ingreso por factores 
+
+El sistema debe permitir ingresar directamente los factores correspondientes a una calificación. 
+
+Esta funcionalidad estará disponible cuando: 
+
+Se hayan ingresado los montos. 
+
+El usuario avance al siguiente paso. 
+
+El usuario seleccione la pestaña Factores. 
+
+Los factores calculados deben poder visualizarse y, según las reglas definidas, editarse. 
+
+ 
+
+Modificación y eliminación de calificaciones 
+
+El sistema debe permitir modificar una calificación previamente registrada. 
+
+La modificación debe permitir: 
+
+Reemplazar los montos ingresados inicialmente. 
+
+Modificar los factores en la etapa de revisión. 
+
+Registrar la fecha y hora de la última modificación. 
+
+Registrar el origen o mecanismo mediante el cual se realizó la actualización. 
+
+También debe permitir eliminar una calificación a la vez. 
+
+ 
+
+ 
+
+ 
+
+Carga masiva de calificaciones 
+
+El mantenedor debe disponer de una funcionalidad para cargar calificaciones mediante un archivo CSV. 
+
+La ventana de carga debe: 
+
+Permitir seleccionar el archivo. 
+
+Previsualizar la información. 
+
+Validar previamente el formato. 
+
+Identificar errores antes de realizar la carga. 
+
+Permitir confirmar el ingreso. 
+
+ 
+
+Carga masiva de montos y factores 
+
+Debe existir una funcionalidad para cargar masivamente información correspondiente a los factores 8 al 37. 
+
+El sistema debe: 
+
+Permitir cargar un archivo CSV. 
+
+Previsualizar los datos. 
+
+Mostrar los factores calculados. 
+
+Validar el formato. 
+
+Permitir confirmar la carga. 
+
+ 
+
+ 
+
+ 
+
+Ventana de carga externa 
+
+Al seleccionar Carga externa, se debe abrir una ventana emergente que contenga inicialmente los campos: 
+
+Ejercicio / año comercial. 
+
+Mercado. 
+
+Instrumento. 
+
+Fecha de pago. 
+
+Descripción. 
+
+Secuencia del evento. 
+
+Factores 8 al 37. 
+
+Los campos deben permanecer vacíos hasta realizar la previsualización del archivo. 
+
+La ventana debe incluir: 
+
+Botón Formato de archivo. 
+
+Botón Subir archivo. 
+
+Previsualización de los datos. 
+
+ 
+
+Actualización de registros existentes 
+
+Cuando el archivo contenga una calificación que ya exista en el sistema, se debe identificar mediante una llave única. 
+
+El sistema debe: 
+
+Crear registros nuevos cuando no existan. 
+
+Actualizar registros existentes cuando coincida la llave. 
+
+Registrar fecha y hora de actualización. 
+
+Registrar el mecanismo utilizado para actualizar la información. 
+
+Mantener identificada la fuente de ingreso. 
+
+ 
+
+ 
+
+ 
+
+Fuente de ingreso de la calificación 
+
+El mantenedor debe incorporar una columna que permita identificar el origen de cada calificación. 
+
+Los valores posibles deben permitir distinguir entre: 
+
+Carga mediante archivo. 
+
+Ingreso manual. 
+
+Información proveniente del sistema. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Seguridad TI 
+
+Medida de seguridad → qué protege → por qué el negocio la necesita → impacto si no se implementa. 
+
+Necesidades identificadas de seguridad y Medidas propuestas para el proyecto. 
+Por ejemplo: 
+
+Autenticación. 
+
+Autorización. 
+
+Control de acceso. 
+
+Contraseñas protegidas mediante hashing. 
+
+Cifrado. 
+
+Protección de datos. 
+
+Copias de seguridad. 
+
+Gestión de vulnerabilidades. 
+
+Registro de eventos. 
+
+Principio de mínimo privilegio. 
+
+8. Impacto ético y profesional 
+
+Para cada medida de seguridad debes considerar aspectos como: 
+
+Privacidad de los usuarios. 
+
+Protección de datos personales. 
+
+Uso responsable de la información. 
+
+Confidencialidad. 
+
+Transparencia. 
+
+Acceso autorizado. 
+
+Responsabilidad profesional. 
+
+Ejemplo: 
+
+La información de los clientes debe utilizarse únicamente para fines autorizados, evitando accesos o tratamientos que vulneren su privacidad. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Conclusiones 
+
+Presentar una síntesis, donde se expongan ideas principales y algunas ideas personales en torno al tema. También puede incorporar ideas fuerza y/o aportes a partir del trabajo desarrollado. 
+
+También es posible incorporar reflexiones, incluso dejar propuestas de profundización que no fueron posibles de abordar en este informe o trabajo. 
+
+ 
+
+ 
